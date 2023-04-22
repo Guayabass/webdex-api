@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { UsersAuthModule } from './users-auth/users-auth.module';
 import entities from './typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 
 @Module({
@@ -14,8 +16,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     database: 'db_327362',
     entities,
     synchronize: true
+  }), ThrottlerModule.forRoot({
+    ttl: 5,
+    limit: 1,
   })],
   controllers: [],
-  providers: [],
+  providers: [{
+    provide: APP_GUARD,
+    useClass: ThrottlerGuard
+  }],
 })
 export class AppModule {}
