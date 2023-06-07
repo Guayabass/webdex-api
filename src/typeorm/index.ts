@@ -1,4 +1,3 @@
-
 import { Favorite } from './Favorite';
 import {User} from './User';
 
