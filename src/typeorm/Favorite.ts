@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique } from "typeorm";
 import { User } from "./User";
 
 @Entity()
+@Unique(["pokemonID", "user"])
 export class Favorite {
     @PrimaryGeneratedColumn()
     id: number;
