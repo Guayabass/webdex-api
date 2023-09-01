@@ -2,12 +2,12 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique }
 import { User } from "./User";
 
 @Entity()
-@Unique(["pokemonID"])
+//@Unique(["pokemonID"])
 export class Favorite {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({unique: true})
     pokemonID: number;
 
     @Column()
