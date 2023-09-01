@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique, Index } from "typeorm";
 import { User } from "./User";
 
 @Entity()
@@ -8,6 +8,7 @@ export class Favorite {
     id: number;
 
     @Column()
+    @Index({unique: true})
     pokemonID: number;
 
     @Column()
@@ -15,6 +16,7 @@ export class Favorite {
 
     @ManyToOne(() => User, (user) => user.favorites)
     @JoinColumn({name: 'user_id'})
+    @Index({unique: true})
     user: User;
 
 }
