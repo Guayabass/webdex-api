@@ -7,7 +7,7 @@ export class Favorite {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({unique: true})
+    @Column()
     pokemonID: number;
 
     @Column()
