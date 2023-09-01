@@ -69,11 +69,11 @@ export class UsersAuthService {
             return userDB;
         } else {
             console.log('Wrong Password');
-            return null;
+            return new HttpException('User not found', HttpStatus.NOT_FOUND);
         }
 
     }
     console.log('Validation failed')
-    return null;
+    return new HttpException('User not found', HttpStatus.NOT_FOUND);
   }
 }
