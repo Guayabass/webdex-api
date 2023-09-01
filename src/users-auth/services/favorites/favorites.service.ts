@@ -28,11 +28,6 @@ export class FavoritesService {
     newFavorite.user = user;
     newFavorite.pokemonID = favDTO.pokemonID;
     newFavorite.pokemonName = favDTO.pokemonName;
-    const existsFav = this.getUsersFavorites(favDTO.user, favDTO.pokemonID)
-    console.log(existsFav)
-    if (existsFav){//llamar getUsersFavorites
-      return new HttpException('User/Pokemon already exists', HttpStatus.CONFLICT);
-    }
     return this.favoriteRepository.save(newFavorite);
   }
 

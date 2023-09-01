@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique }
 import { User } from "./User";
 
 @Entity()
-//@Unique(["user", "pokemonID"] )
+@Unique(["user", "pokemonID"] )
 export class Favorite {
     @PrimaryGeneratedColumn()
     id: number;
